@@ -6,11 +6,17 @@ export default function useFetchSubreddit(subreddit) {
 
 	useEffect(() => {
 		let ignore = false
-		;(async function fetch() {
-			if (!ignore) setData(await fetchSubreddit(subreddit))
-		})()
 
-		return () => (ignore = true)
+		const delayDebounceFn = setTimeout(() => {
+			;(async function fetch() {
+				if (!ignore) setData(await fetchSubreddit(subreddit))
+			})()
+		}, 1000)
+
+		return () => {
+			ignore = true
+			clearTimeout(delayDebounceFn)
+		}
 	}, [subreddit])
 
 	return data
