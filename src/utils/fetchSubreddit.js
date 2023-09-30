@@ -1,4 +1,4 @@
-export default async function getAllSubredditFromApi(subreddit) {
+export default async function fetchSubreddit(subreddit) {
 	try {
 		let response = await fetch(`https://www.reddit.com/r/${subreddit}.json`)
 		let responseJson = await response.json()

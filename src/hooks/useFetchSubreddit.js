@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import getSubredditFromApi from '../utils/getSubredditFromApi'
+import fetchSubreddit from '../utils/fetchSubreddit'
 
 export default function useFetchSubreddit(subreddit) {
 	const [data, setData] = useState()
@@ -7,7 +7,7 @@ export default function useFetchSubreddit(subreddit) {
 
 	useEffect(() => {
 		;(async function fetch() {
-			const data = await getSubredditFromApi(subreddit)
+			const data = await fetchSubreddit(subreddit)
 			if (!ignore) {
 				setData(data)
 			}
