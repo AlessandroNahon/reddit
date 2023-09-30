@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  padding: 0 25px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -35,6 +39,7 @@ ul {
   top: 0;
   background-color: rgb(39, 39, 39);
   z-index: 1;
+  overflow-x: scroll;
 }
 
 li {
@@ -54,9 +59,7 @@ li:hover {
 
 #post {
   display: flex;
-  max-width: 600px;
-  position: relative;
-  left: calc(50% - 300px);
+  max-width: 50em;
   justify-content: space-between;
   color:bisque;
   background-color: rgba(255, 86, 0, 0.01);
@@ -76,12 +79,11 @@ li:hover {
 
 
 h3,h4 {
-  max-width: 300px;
   text-align: left;
 }
 
 #post-metadata {
-  width: 300px;
+  padding-right: 25px;
 }
 
 #post-media {
