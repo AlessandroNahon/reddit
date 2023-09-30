@@ -7,8 +7,10 @@ export default function useFetchSubreddit(subreddit) {
 
 	useEffect(() => {
 		;(async function fetch() {
-			const data = await getSubredditFromApi(subreddit, ignore)
-			setData(data)
+			const data = await getSubredditFromApi(subreddit)
+			if (!ignore) {
+				setData(data)
+			}
 		})()
 
 		return () => (ignore = true)

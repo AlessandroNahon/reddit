@@ -31,8 +31,8 @@ const menu = [
 ]
 
 export default function App() {
-	const [data, setData] = useState()
-	const home = useFetchSubreddit('all')
+	const [selectedSubreddit, setSelectedSubreddit] = useState()
+	const defaultSubreddit = useFetchSubreddit('all')
 
 	return (
 		<div className='App'>
@@ -41,14 +41,14 @@ export default function App() {
 					<li
 						key={item}
 						onClick={async () =>
-							setData(await getSubredditFromApi(item, false))
+							setSelectedSubreddit(await getSubredditFromApi(item))
 						}
 					>
 						{item}
 					</li>
 				))}
 			</ul>
-			<MainView subreddit={data || home} />
+			<MainView subreddit={selectedSubreddit || defaultSubreddit} />
 		</div>
 	)
 }
