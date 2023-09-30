@@ -3,9 +3,9 @@ import fetchSubreddit from '../utils/fetchSubreddit'
 
 export default function useFetchSubreddit(subreddit) {
 	const [data, setData] = useState()
-	let ignore = false
 
 	useEffect(() => {
+		let ignore = false
 		;(async function fetch() {
 			const data = await fetchSubreddit(subreddit)
 			if (!ignore) {
@@ -14,7 +14,7 @@ export default function useFetchSubreddit(subreddit) {
 		})()
 
 		return () => (ignore = true)
-	}, [])
+	}, [subreddit])
 
 	return data
 }
