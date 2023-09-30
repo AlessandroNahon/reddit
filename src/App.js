@@ -6,12 +6,16 @@ import useFetchSubreddit from './hooks/useFetchSubreddit'
 
 export default function App() {
 	const [selectedSubreddit, setSelectedSubreddit] = useState()
-	const defaultSubreddit = useFetchSubreddit('all')
+	const [searchValue, setSearchValue] = useState('')
+	const defaultSubreddit = useFetchSubreddit(searchValue || 'all')
 
 	return (
 		<>
 			<Menu setSelectedSubreddit={setSelectedSubreddit} />
-			<Main subreddit={selectedSubreddit || defaultSubreddit} />
+			<Main
+				subreddit={selectedSubreddit || defaultSubreddit}
+				search={{ searchValue, setSearchValue }}
+			/>
 		</>
 	)
 }

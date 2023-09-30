@@ -1,11 +1,12 @@
 import playSvg from '../assets/play.svg'
 import noImageSvg from '../assets/no-image.svg'
+import loadingGif from '../loading.gif'
 
-export default function Posts({posts}) {
+export default function Posts({ posts }) {
 
   const isImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i;
 
-  if (!posts) return <>loading...</>
+  if (!posts) return <img style={{width: '50px', marginTop: '25px'}} src={loadingGif} alt="loading" />
 
   return posts.map(({ url_overridden_by_dest, permalink, subreddit, title, is_video, media, thumbnail, subreddit_name_prefixed }) => (
     <a href={url_overridden_by_dest} target="_blank" rel="noreferrer" id="post" key={permalink}>

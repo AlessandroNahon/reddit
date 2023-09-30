@@ -1,5 +1,9 @@
 import Posts from './Posts'
+import Search from './Search'
 
-export default function MainView({subreddit}) {
-  return <main><Posts posts={subreddit} /></main>
+export default function MainView({subreddit, search}) {
+  return <main>
+    <Search search={search} />
+    <Posts posts={subreddit} />
+  </main>
 }

@@ -7,10 +7,7 @@ export default function useFetchSubreddit(subreddit) {
 	useEffect(() => {
 		let ignore = false
 		;(async function fetch() {
-			const data = await fetchSubreddit(subreddit)
-			if (!ignore) {
-				setData(data)
-			}
+			if (!ignore) setData(await fetchSubreddit(subreddit))
 		})()
 
 		return () => (ignore = true)

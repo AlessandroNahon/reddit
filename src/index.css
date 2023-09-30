@@ -79,3 +79,16 @@ li:hover {
 #post-media, #post-image, video[poster] {
   width: 140px;
 }
+
+input {
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: rgba(26, 213, 60, 1);
+  font-weight: 600;
+  margin-top: 25px;
+}
+
+input::placeholder {
+  color: rgba(26, 213, 60, 1)
+}
