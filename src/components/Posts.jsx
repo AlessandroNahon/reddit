@@ -9,7 +9,7 @@ export default function Posts({posts}) {
 
   return posts.map(({ url_overridden_by_dest, permalink, subreddit, title, is_video, media, thumbnail, subreddit_name_prefixed }) => (
     <a href={url_overridden_by_dest} target="_blank" rel="noreferrer" id="post" key={permalink}>
-        <div id="post-metadata">
+        <div id="post-info">
           <h4>
             <a href={`https://www.reddit.com/${subreddit_name_prefixed}`} target="_blank" rel="noreferrer">
             /{subreddit}
