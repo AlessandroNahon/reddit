@@ -92,3 +92,7 @@ input {
 input::placeholder {
   color: rgba(26, 213, 60, 1)
 }
+
+button {
+  margin-top: 25px;
+}

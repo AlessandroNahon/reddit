@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import fetchSubreddit from '../utils/fetchSubreddit'
 
-export default function useFetchSubreddit(subreddit) {
+export default function useFetchSubreddit(subreddit, pagination) {
 	const [data, setData] = useState()
 
 	useEffect(() => {
@@ -9,7 +9,9 @@ export default function useFetchSubreddit(subreddit) {
 
 		const delayDebounceFn = setTimeout(() => {
 			;(async function fetch() {
-				if (!ignore) setData(await fetchSubreddit(subreddit))
+				if (!ignore) {
+					setData(await fetchSubreddit({ subreddit, pagination }))
+				}
 			})()
 		}, 1000)
 
@@ -17,7 +19,6 @@ export default function useFetchSubreddit(subreddit) {
 			ignore = true
 			clearTimeout(delayDebounceFn)
 		}
-	}, [subreddit])
-
+	}, [pagination, subreddit])
 	return data
 }
