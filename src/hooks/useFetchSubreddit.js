@@ -14,7 +14,7 @@ export default function useFetchSubreddit(subreddit, pagination, setLoading) {
 					setLoading(false)
 				}
 			})()
-		}, 1000)
+		}, 300)
 
 		return () => {
 			ignore = true

@@ -15,7 +15,7 @@ export default function Search({ search }) {
 
   function setValue(e) {
     e.preventDefault()
-    search.setSearchValue(e.target.value)
+    search.setSearchValue(e.target.value || 'all')
   }
     
   return (
