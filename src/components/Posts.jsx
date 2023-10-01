@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 
 import playSvg from '../assets/play.svg'
-import noImageSvg from '../assets/no-image.svg'
-import loadingGif from '../loading.gif'
+import redditSvg from '../assets/reddit.svg'
+import loadingGif from '../assets/loading.gif'
 
 import AppContext from '../context/appContext'
 
@@ -36,7 +36,7 @@ export default function Posts({ posts }) {
                 onMouseLeave={e => e.target.load()}
             >  
               </video> :
-              <img src={isImageUrl.test(thumbnail) ? thumbnail : noImageSvg} alt={title} id="post-image" />
+              <img src={isImageUrl.test(thumbnail) ? thumbnail : redditSvg} alt={title} id="post-image" />
           }
         </div>
       </a>

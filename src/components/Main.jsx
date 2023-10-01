@@ -12,5 +12,6 @@ export default function MainView() {
     <Search search={search} />
     <Navigation />
     <Posts posts={content} />
+    <Navigation />
   </main>
 }
