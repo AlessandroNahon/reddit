@@ -4,7 +4,7 @@ import AppContext from '../context/appContext'
 
 export default function Navigation() {
   const { pagination, setPagination, fetchedSubreddit, selectedSubreddit } = useContext(AppContext)
-  
+
   const rest = { after: (selectedSubreddit || fetchedSubreddit)?.after, before: (selectedSubreddit || fetchedSubreddit)?.before}
 
   return (
@@ -13,7 +13,7 @@ export default function Navigation() {
       <button
         id="prev"
         onClick={(e) =>
-          setPagination({ ...rest, clicked: e.target.id, count: pagination.count - 25 })
+          setPagination({ ...rest, clicked: e.target.id, count: pagination.count === 25 ? 25 : pagination.count - 25 })
         }
       >
         prev
