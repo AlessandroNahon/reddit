@@ -32,7 +32,7 @@ export default function Menu() {
 
 	return (
 		<nav>
-			<ul id='menu'>
+			<ul>
 				{menu.map((subreddit) => (
 					<li
 						key={subreddit}
