@@ -6,7 +6,7 @@ export default async function fetchSubreddit({ subreddit, pagination }) {
 			pagination.clicked !== ''
 				? `https://www.reddit.com/r/${subreddit}/.json?count=${
 						pagination?.count
-				  }&${getNavigationDirection()}`
+				  }&${getNavigationDirection(pagination)}`
 				: `https://www.reddit.com/r/${subreddit}/.json`
 		)
 		let responseJson = await response.json()
