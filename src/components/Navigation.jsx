@@ -3,12 +3,11 @@ import { useContext } from 'react'
 import AppContext from '../context/appContext'
 
 export default function Navigation() {
-  const { pagination, setPagination, fetchedSubreddit, selectedSubreddit } = useContext(AppContext)
+  const { pagination, setPagination, fetchedSubreddit } = useContext(AppContext)
 
-  const rest = { after: (selectedSubreddit || fetchedSubreddit)?.after, before: (selectedSubreddit || fetchedSubreddit)?.before}
+  const rest = { after: fetchedSubreddit?.after, before: fetchedSubreddit?.before}
 
   return (
-
     <>
       <button
         id="prev"

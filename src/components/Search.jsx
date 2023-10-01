@@ -1,11 +1,19 @@
-export default function Search({search}) {
-  return (
-    <form onKeyDown={(e) => {
+export default function Search({ search }) {
+  function onKeyDown(e) {
     if(e.key === 'Enter') {
       e.preventDefault();
       return false;
     }
-    }} onSubmit={async () => await search.handleSubmit()}>
+  }
+
+  function onKeyup(e) {
+    if (search.searchValue === '') {
+      search.setSearchValue('all')
+    }
+  }
+    
+  return (
+    <form onKeyDown={onKeyDown} onKeyUp={onKeyup}>
       <input type="text" placeholder="/r" onChange={(e) => search.setSearchValue(e.target.value)} />
     </form>
 

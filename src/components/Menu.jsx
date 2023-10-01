@@ -1,6 +1,5 @@
 import {useContext} from 'react'
 
-import fetchSubreddit from '../utils/fetchSubreddit'
 import AppContext from '../context/appContext'
 
 const menu = [
@@ -29,20 +28,22 @@ const menu = [
 ]
 
 export default function Menu() {
-	const { setSelectedSubreddit } = useContext(AppContext)
+	const { setSearchValue } = useContext(AppContext)
 
 	return (
-		<ul id='menu'>
-			{menu.map((subreddit) => (
-				<li
-					key={subreddit}
-					onClick={async () =>
-						setSelectedSubreddit(await fetchSubreddit({ subreddit, pagination: {clicked: '', after: '', before: '', count: 25} }))
-					}
-				>
-					{subreddit}
-				</li>
-			))}
-		</ul>
+		<nav>
+			<ul id='menu'>
+				{menu.map((subreddit) => (
+					<li
+						key={subreddit}
+						onClick={async () =>
+							setSearchValue(subreddit)
+						}
+					>
+						{subreddit}
+					</li>
+				))}
+			</ul>
+		</nav>
 	)
 }

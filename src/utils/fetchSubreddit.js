@@ -1,18 +1,12 @@
+import getNavigationDirection from './getNavigationDirection'
+
 export default async function fetchSubreddit({ subreddit, pagination }) {
 	try {
-		const getDirection = () => {
-			if (pagination.clicked === 'next') return `after=${pagination?.after}`
-			if (pagination.clicked === 'prev' && pagination.count > 25)
-				return `before=${pagination?.before}`
-
-			return ''
-		}
-
 		let response = await fetch(
 			pagination.clicked !== ''
 				? `https://www.reddit.com/r/${subreddit}/.json?count=${
 						pagination?.count
-				  }&${getDirection()}`
+				  }&${getNavigationDirection()}`
 				: `https://www.reddit.com/r/${subreddit}/.json`
 		)
 		let responseJson = await response.json()
