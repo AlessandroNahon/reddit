@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 
 import playSvg from '../assets/play.svg'
 import noImageSvg from '../assets/no-image.svg'
 import loadingGif from '../loading.gif'
 
-import AppContext from '../context/appContext';
+import AppContext from '../context/appContext'
 
 export default function Posts({ posts }) {
   const {loading} = useContext(AppContext)
-  const isImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i;
+  const isImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i
 
   if (!posts || loading) return <img style={{width: '50px', marginTop: '25px'}} src={loadingGif} alt="loading" />
 
