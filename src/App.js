@@ -6,6 +6,7 @@ import useFetchSubreddit from './hooks/useFetchSubreddit'
 import AppContext from './context/appContext'
 
 export default function App() {
+	const [loading, setLoading] = useState(false)
 	const [searchValue, setSearchValue] = useState('all')
 	const [pagination, setPagination] = useState({
 		clicked: '',
@@ -14,18 +15,24 @@ export default function App() {
 		count: 25,
 	})
 
-	const fetchedSubreddit = useFetchSubreddit(searchValue, pagination)
+	const fetchedSubreddit = useFetchSubreddit(
+		searchValue,
+		pagination,
+		setLoading
+	)
 
 	return (
 		<AppContext.Provider
 			value={{
-				searchValue,
 				fetchedSubreddit,
+				searchValue,
 				setSearchValue,
 				content: fetchedSubreddit?.children?.map((o) => o.data),
 				search: { searchValue, setSearchValue },
 				setPagination,
 				pagination,
+				setLoading,
+				loading,
 			}}
 		>
 			<Menu />

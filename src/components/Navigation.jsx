@@ -8,7 +8,7 @@ export default function Navigation() {
   const rest = { after: fetchedSubreddit?.after, before: fetchedSubreddit?.before}
 
   return (
-    <>
+    <span>
       <button
         id="prev"
         onClick={(e) =>
@@ -25,6 +25,6 @@ export default function Navigation() {
       >
         next
       </button>
-    </>
+    </span>
   )
 }
