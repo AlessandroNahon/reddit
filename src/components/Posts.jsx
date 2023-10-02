@@ -29,7 +29,10 @@ export default function Posts({ posts }) {
             {title}
           </h3>
         </div>
-        <div id="post-media">
+      <div id="post-media">
+        <span>
+
+       
           {
             is_video ?
             <video
@@ -42,6 +45,7 @@ export default function Posts({ posts }) {
               </video> :
               <img src={isImageUrl.test(thumbnail) ? thumbnail : redditSvg} alt={title} id="post-image" />
           }
+           </span>
         </div>
       </a>
     )

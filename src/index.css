@@ -26,6 +26,9 @@ main {
   display: flex;
   flex-direction: column;
   max-width: 50em;
+  overflow: hidden;
+  max-height: calc(100vh - 25px);
+  overflow-y: scroll;
 }
 
 code {
@@ -99,10 +102,27 @@ li {
 
 #post-info {
   padding-right: 25px;
+
+  & h4 {
+    margin-top: 0;
+  }
+}
+
+#post-title {
+  margin-bottom: 0;
 }
 
 #post-media, #post-image, video[poster] {
   width: 140px;
+}
+
+#post-media {
+  & span {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 }
 
 input {
@@ -151,5 +171,23 @@ form {
     margin: 0;
     padding: 0;
     cursor: default;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #post {
+    background-color: transparent;
+    margin: 0;
+    min-width: 350px;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  #post-media,
+  #post-image,
+  video[poster] {
+    max-width: 100px;
   }
 }
