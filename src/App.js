@@ -8,7 +8,7 @@ import AppContext from './context/appContext'
 export default function App() {
 	const [pageNumber, setPageNumber] = useState(1)
 	const [loading, setLoading] = useState(false)
-	const [searchValue, setSearchValue] = useState('all')
+	const [searchValue, setSearchValue] = useState('popular')
 	const [pagination, setPagination] = useState({
 		clicked: '',
 		after: '',
@@ -21,6 +21,12 @@ export default function App() {
 		pagination,
 		setLoading
 	)
+
+	function routeToSub(subreddit) {
+		setSearchValue(subreddit)
+		setPagination({ clicked: '', after: '', before: '', count: 25 })
+		setPageNumber(1)
+	}
 
 	return (
 		<AppContext.Provider
@@ -36,6 +42,7 @@ export default function App() {
 				loading,
 				setPageNumber,
 				pageNumber,
+				routeToSub,
 			}}
 		>
 			<Menu />

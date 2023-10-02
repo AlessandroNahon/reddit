@@ -28,7 +28,7 @@ const menu = [
 ]
 
 export default function Menu() {
-	const { setSearchValue, setPagination, setPageNumber } = useContext(AppContext)
+	const { routeToSub } = useContext(AppContext)
 
 	return (
 		<nav>
@@ -36,15 +36,7 @@ export default function Menu() {
 				{menu.map((subreddit) => (
 					<li
 						key={subreddit}
-						onClick={() => {
-								setSearchValue(subreddit)
-								setPagination({ clicked: '',
-									after: '',
-									before: '',
-									count: 25, })
-								setPageNumber(1)
-							}	
-						}
+						onClick={() => routeToSub(subreddit)}
 					>
 						{subreddit}
 					</li>

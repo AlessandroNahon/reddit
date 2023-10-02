@@ -7,8 +7,13 @@ import loadingGif from '../assets/loading.gif'
 import AppContext from '../context/appContext'
 
 export default function Posts({ posts }) {
-  const {loading} = useContext(AppContext)
+  const {loading, routeToSub} = useContext(AppContext)
   const isImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i
+
+  function goToSubreddit(e, subreddit) {
+    e.preventDefault()
+    routeToSub(subreddit)
+  }
 
   if (!posts || loading) return <img style={{width: '50px', marginTop: '25px'}} src={loadingGif} alt="loading" />
 
@@ -16,10 +21,9 @@ export default function Posts({ posts }) {
     <a href={url_overridden_by_dest} target="_blank" rel="noreferrer" id="post" key={permalink}>
         <div id="post-info">
           <h4>
-            <a href={`https://www.reddit.com/${subreddit_name_prefixed}`} target="_blank" rel="noreferrer">
-            /{subreddit}
-            </a>
-            
+            <button id='post-sub' onClick={(e) => goToSubreddit(e, subreddit)}>
+              /{subreddit}
+            </button>
           </h4>
           <h3 id="post-title">
             {title}
