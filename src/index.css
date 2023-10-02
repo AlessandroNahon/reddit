@@ -1,4 +1,5 @@
 :root {
+  --white: bisque;
   --black: rgb(30, 30, 30);
   --orange-full: rgba(255, 86, 0, 1);
   --orange-half: rgba(255, 86, 0, 0.5);
@@ -73,7 +74,7 @@ li {
 #post {
   display: flex;
   justify-content: space-between;
-  color:bisque;
+  color: var(--white);
   background-color: var(--orange-dim);
   margin: 25px 0;
   padding: 25px;
@@ -111,7 +112,6 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-right: 25px;
   border-radius: 25px;
 }
 
@@ -123,4 +123,9 @@ button {
 
 #next:hover {
   border-color: var(--green-full);
+}
+
+#page-number {
+  padding: 0 25px;
+  color: var(--white);
 }

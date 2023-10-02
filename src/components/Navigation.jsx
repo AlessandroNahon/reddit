@@ -3,26 +3,34 @@ import { useContext } from 'react'
 import AppContext from '../context/appContext'
 
 export default function Navigation() {
-  const { pagination, setPagination, fetchedSubreddit } = useContext(AppContext)
 
-  const rest = { after: fetchedSubreddit?.after, before: fetchedSubreddit?.before}
+  const { pagination, setPagination, fetchedSubreddit, setPageNumber, pageNumber } = useContext(AppContext)
+
+  const rest = { after: fetchedSubreddit?.after, before: fetchedSubreddit?.before }
+
+  function handlePrev(e) {
+    setPagination({ ...rest, clicked: e.target.id, count: pagination.count === 25 ? 25 : pagination.count - 25 })
+    setPageNumber(pageNumber - 1)
+  }
+
+  function handleNext(e) {
+    setPagination({ ...rest, clicked: e.target.id, count: pagination.count + 25 })
+    setPageNumber(pageNumber + 1)
+  }
 
   return (
     <span>
       <button
-        disabled={pagination.count <= 25}
+        disabled={pageNumber === 1}
         id="prev"
-        onClick={(e) =>
-          setPagination({ ...rest, clicked: e.target.id, count: pagination.count === 25 ? 25 : pagination.count - 25 })
-        }
+        onClick={handlePrev}
       >
         prev
       </button>
+      <span id='page-number'>{pageNumber}</span>
       <button
         id="next"
-        onClick={(e) =>
-          setPagination({ ...rest, clicked: e.target.id, count: pagination.count + 25 })
-        }
+        onClick={handleNext}
       >
         next
       </button>

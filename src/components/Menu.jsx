@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import { useContext } from 'react'
 
 import AppContext from '../context/appContext'
 
@@ -28,7 +28,7 @@ const menu = [
 ]
 
 export default function Menu() {
-	const { setSearchValue } = useContext(AppContext)
+	const { setSearchValue, setPagination, setPageNumber } = useContext(AppContext)
 
 	return (
 		<nav>
@@ -36,8 +36,14 @@ export default function Menu() {
 				{menu.map((subreddit) => (
 					<li
 						key={subreddit}
-						onClick={async () =>
-							setSearchValue(subreddit)
+						onClick={() => {
+								setSearchValue(subreddit)
+								setPagination({ clicked: '',
+									after: '',
+									before: '',
+									count: 25, })
+								setPageNumber(1)
+							}	
 						}
 					>
 						{subreddit}

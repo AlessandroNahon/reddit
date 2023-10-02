@@ -10,7 +10,6 @@ export default function MainView() {
 
   return <main>
     <Search search={search} />
-    <Navigation />
     <Posts posts={content} />
     <Navigation />
   </main>
