@@ -24,6 +24,7 @@ main {
   padding: 0 25px 25px 25px;
   display: flex;
   flex-direction: column;
+  max-width: 50em;
 }
 
 code {
@@ -71,7 +72,6 @@ li {
 
 #post {
   display: flex;
-  max-width: 50em;
   justify-content: space-between;
   color:bisque;
   background-color: var(--orange-dim);
@@ -116,7 +116,9 @@ button {
 }
 
 #prev:hover {
-  border-color: var(--orange-full);
+  &:not([disabled]) {
+    border-color: var(--orange-full);
+  }
 }
 
 #next:hover {

@@ -10,6 +10,7 @@ export default function Navigation() {
   return (
     <span>
       <button
+        disabled={pagination.count <= 25}
         id="prev"
         onClick={(e) =>
           setPagination({ ...rest, clicked: e.target.id, count: pagination.count === 25 ? 25 : pagination.count - 25 })
