@@ -8,7 +8,7 @@ import AppContext from './context/appContext'
 export default function App() {
 	const [pageNumber, setPageNumber] = useState(1)
 	const [loading, setLoading] = useState(false)
-	const [searchValue, setSearchValue] = useState('popular')
+	const [searchValue, setSearchValue] = useState('all')
 	const [pagination, setPagination] = useState({
 		clicked: '',
 		after: '',

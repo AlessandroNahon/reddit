@@ -11,13 +11,13 @@ export default function Search({ search }) {
   function onKeyup(e) {
     if (search.searchValue === '') {
       e.preventDefault()
-      search.setSearchValue('popular')
+      search.setSearchValue('all')
     }
   }
 
   function setValue(e) {
     e.preventDefault()
-    search.setSearchValue(e.target.value || 'popular')
+    search.setSearchValue(e.target.value || 'all')
   }
 
   function onPointerEnter(e) {
