@@ -66,6 +66,10 @@ li {
   cursor: pointer;
   display: inline-block;
 
+  &.selected {
+    color: var(--green-full);
+  }
+
   &:hover {
     color: var(--green-half);
   }

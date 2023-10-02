@@ -28,7 +28,7 @@ const menu = [
 ]
 
 export default function Menu() {
-	const { routeToSub } = useContext(AppContext)
+	const { routeToSub, searchValue } = useContext(AppContext)
 
 	return (
 		<nav>
@@ -37,6 +37,7 @@ export default function Menu() {
 					<li
 						key={subreddit}
 						onClick={() => routeToSub(subreddit)}
+						className={subreddit === searchValue ? 'selected' : ''}
 					>
 						{subreddit}
 					</li>
