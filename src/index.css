@@ -175,14 +175,22 @@ form {
 }
 
 @media only screen and (max-width: 600px) {
+  main {
+    padding: 0 0 25px 0;
+  }
   #post {
     background-color: transparent;
     margin: 0;
+    padding: 25px 10px;
     min-width: 350px;
 
     &:hover {
       background-color: transparent;
     }
+  }
+
+  form {
+    padding: 0 10px;
   }
 
   #post-media,
