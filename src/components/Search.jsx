@@ -1,3 +1,5 @@
+import { isMobile } from '../utils/device'
+
 export default function Search({ search }) {
   function onKeyDown(e) {
     if(e.key === 'Enter') {
@@ -17,10 +19,14 @@ export default function Search({ search }) {
     e.preventDefault()
     search.setSearchValue(e.target.value || 'all')
   }
+
+  function onPointerEnter(e) {
+    if (isMobile) setValue(e)
+  }
     
   return (
     <form onKeyDown={onKeyDown} onKeyUp={onKeyup}>
-      <input type="text" placeholder="/r" onChange={setValue} onPointerEnter={setValue} />
+      <input type="text" placeholder="/r" onChange={setValue} onPointerEnter={onPointerEnter} />
     </form>
 
   )
