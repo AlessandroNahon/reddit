@@ -11,13 +11,13 @@ export default function Search({ search }) {
   function onKeyup(e) {
     if (search.searchValue === '') {
       e.preventDefault()
-      search.setSearchValue('all')
+      search.setSearchValue('popular')
     }
   }
 
   function setValue(e) {
     e.preventDefault()
-    search.setSearchValue(e.target.value || 'all')
+    search.setSearchValue(e.target.value || 'popular')
   }
 
   function onPointerEnter(e) {
@@ -26,7 +26,8 @@ export default function Search({ search }) {
     
   return (
     <form onKeyDown={onKeyDown} onKeyUp={onKeyup}>
-      <input type="text" placeholder="/r" onChange={setValue} onPointerEnter={onPointerEnter} />
+      <input type="text" placeholder='/r' onChange={setValue} onPointerEnter={onPointerEnter} />
+      <h4>/{ search.searchValue }</h4>
     </form>
 
   )

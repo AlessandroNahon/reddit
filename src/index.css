@@ -136,3 +136,16 @@ button {
   padding: 0 25px;
   color: var(--white);
 }
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  & h4 {
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    cursor: default;
+  }
+}
