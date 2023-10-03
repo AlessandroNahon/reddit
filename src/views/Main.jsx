@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 
-import Posts from './Posts'
-import Search from './Search'
+import Posts from '../components/Posts'
+import Search from '../components/Search'
 import AppContext from '../context/appContext'
-import Navigation from './Navigation'
+import Navigation from '../components/Navigation'
 
 export default function MainView() {
   const { content, search } = useContext(AppContext)

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Main from './components/Main'
+import Main from './views/Main'
 import Menu from './components/Menu'
 
 import useFetchSubreddit from './hooks/useFetchSubreddit'

@@ -1,6 +1,6 @@
 :root {
   --white: bisque;
-  --black: rgb(30, 30, 30);
+  --black: black;
   --orange-full: rgba(255, 86, 0, 1);
   --orange-half: rgba(255, 86, 0, 0.5);
   --orange-dim: rgba(255, 86, 0, 0.1);
@@ -25,10 +25,17 @@ main {
   padding: 0 25px 25px 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 50em;
   overflow: hidden;
-  max-height: calc(100vh - 25px);
+  height: calc(100vh - 50px);
   overflow-y: scroll;
+
+  & #loading-img {
+    width: 50px;
+    position: relative;
+    left: calc(50% - 50px);
+  }
 }
 
 code {

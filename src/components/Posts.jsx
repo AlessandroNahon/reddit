@@ -15,7 +15,7 @@ export default function Posts({ posts }) {
     routeToSub(subreddit)
   }
 
-  if (!posts || loading) return <img style={{width: '50px', marginTop: '25px'}} src={loadingGif} alt="loading" />
+  if (!posts || loading) return <img src={loadingGif} alt="loading" id="loading-img" />
 
   return posts.map(({ url_overridden_by_dest, permalink, subreddit, title, is_video, media, thumbnail, subreddit_name_prefixed }) => (
     <a href={url_overridden_by_dest} target="_blank" rel="noreferrer" id="post" key={permalink}>
