@@ -1,29 +1,24 @@
 import { useEffect, useState } from 'react'
 import fetchContent from '../utils/fetchContent'
 
-export default function useFetchContent(subreddit, content, setLoading) {
+export default function useFetchContent(permalink, setContentLoading) {
 	const [data, setData] = useState()
 
 	useEffect(() => {
 		let ignore = false
-		setLoading(true)
+		setContentLoading(true)
 		;(async function fetch() {
-			if (!ignore) {
-				setData(
-					await fetchContent({
-						subreddit,
-						contentId: content.id,
-						contentTitle: content.title,
-					})
-				)
+			if (!ignore && permalink) {
+				setData(await fetchContent(permalink))
+				setContentLoading(false)
 			}
 		})()
 
 		return () => {
 			ignore = true
-			setLoading(false)
+			setContentLoading(false)
 		}
-	}, [content.id, content.title, setLoading, subreddit])
+	}, [permalink, setContentLoading])
 
 	return data
 }

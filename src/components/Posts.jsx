@@ -7,7 +7,7 @@ import loadingGif from '../assets/loading.gif'
 import AppContext from '../context/appContext'
 
 export default function Posts({ posts }) {
-  const {loading, routeToSub} = useContext(AppContext)
+  const {subredditLoading, routeToSub, setSelectedContent} = useContext(AppContext)
   const isImageUrl = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/i
 
   function goToSubreddit(e, subreddit) {
@@ -15,10 +15,19 @@ export default function Posts({ posts }) {
     routeToSub(subreddit)
   }
 
-  if (!posts || loading) return <img src={loadingGif} alt="loading" id="loading-img" />
+  function selectContent(e, data) {
+    e.preventDefault()
+    if (data.is_reddit_media_domain) {
+      setSelectedContent(data.permalink)
+    } else {
+      window.open(data.url);
+    }
+  }
 
-  return posts.map(({ url_overridden_by_dest, permalink, subreddit, title, is_video, media, thumbnail, subreddit_name_prefixed }) => (
-    <a href={url_overridden_by_dest} target="_blank" rel="noreferrer" id="post" key={permalink}>
+  if (!posts || subredditLoading) return <img src={loadingGif} alt="loading" className="loading-img" />
+
+  return posts.map(({ permalink, subreddit, title, is_video, media, thumbnail, is_reddit_media_domain, url }) => (
+    <div id="post" onClick={(e) => selectContent(e, { permalink, is_reddit_media_domain, url })} key={permalink}>
         <div id="post-info">
           <h4>
             <button id='post-sub' onClick={(e) => goToSubreddit(e, subreddit)}>
@@ -31,11 +40,10 @@ export default function Posts({ posts }) {
         </div>
       <div id="post-media">
         <span>
-
-       
           {
             is_video ?
-            <video
+              <video
+                id="preview-video"
                 muted
                 poster={playSvg}
                 src={media.reddit_video.scrubber_media_url}
@@ -47,7 +55,7 @@ export default function Posts({ posts }) {
           }
            </span>
         </div>
-      </a>
+      </div>
     )
   )
 }

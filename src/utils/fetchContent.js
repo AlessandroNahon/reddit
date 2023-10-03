@@ -1,15 +1,9 @@
-export default async function fetchContent({
-	subreddit,
-	contentId,
-	contentTitle,
-}) {
+export default async function fetchContent(permalink) {
 	try {
-		let response = await fetch(
-			`https://www.reddit.com/r/${subreddit}/comments/${contentId}/${contentTitle}.json`
-		)
+		let response = await fetch(`https://www.reddit.com${permalink}.json`)
 		let responseJson = await response.json()
 
-		return responseJson[1].data
+		return responseJson
 	} catch (error) {
 		console.error(error)
 	}
